@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './AddTasks.css';
 
 function AddTasks() {
 
@@ -19,7 +20,7 @@ function AddTasks() {
 
     return(
         <>
-        <div>
+        <div className='add-container'>
           <h2>Add a task</h2>
             <input placeholder='Task to add...' value={task} onChange={(e) => setTask(e.target.value)} />
             <button onClick={handleAdd}>Add</button>

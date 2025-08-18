@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './List.css'
 
 function List() {
 
@@ -45,6 +46,7 @@ function List() {
 
   return (
     <>
+    <div className='list-container'>
     <h3>To do list</h3>
       <ul>
         {task.map((t) => (
@@ -52,16 +54,17 @@ function List() {
           {editingId === t.id ? (
             <>
             <input value={newTask} onChange={(e) => setNewTask(e.target.value)}></input>
-            <button onClick={() => handleEdit(t.id)}>Save</button>
-            <button onClick={() => setEditingId(null)}>Cancel</button>
+            <button onClick={() => handleEdit(t.id)} className='sae'>Save</button>
+            <button onClick={() => setEditingId(null)} className='cancel'>Cancel</button>
             </>
 
-          ) : (<><button onClick={() => starEditing(t)}>Edit</button> <button onClick={() => handleDelete(t.id)}>Delete</button></>
+          ) : (<><button onClick={() => starEditing(t)} className='edit'>Edit</button> <button onClick={() => handleDelete(t.id)} className='delete'>Delete</button></>
 
           )}
            </li>
         ))}
       </ul>
+    </div>
     </>
   )
 }
