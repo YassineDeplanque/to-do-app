@@ -17,7 +17,7 @@ export const createTask = async (req, res) => {
     const { texte } = req.body;
 
     if(!texte){
-        return res.status(400).json({ success: false, message: "Name required." });
+        return res.status(400).json({ success: false, message: "Texte required." });
     }
 
     try {
@@ -51,5 +51,28 @@ export const deleteTask = async(req, res) => {
     } catch (err) {
         console.error('Error deleting task', err);
         res.status(500).json({sucess: false, message: "Servor error"});
+    }
+}
+
+export const editTask = async(req, res) => {
+    const { texte } = req.body;
+    const id = req.params.id
+
+    if(!texte){
+        return res.status(400).json({ success: false, message: "Texte required." });
+    }
+
+    try {
+        const db = await connection();
+        const query = 'UPDATE task SET texte = ? WHERE id = ?';
+        const [result] = await db.execute(query, [texte, id])
+
+        res.status(200).json({
+            success: true,
+            message: 'Task updated'
+        })
+    } catch (err) {
+        console.error('Error editing task', err)
+        res.status(500).json({sucess: false, message: "Servor error"})
     }
 }
