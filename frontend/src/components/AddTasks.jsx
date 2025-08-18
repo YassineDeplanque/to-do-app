@@ -20,6 +20,7 @@ function AddTasks() {
     return(
         <>
         <div>
+          <h2>Add a task</h2>
             <input placeholder='Task to add...' value={task} onChange={(e) => setTask(e.target.value)} />
             <button onClick={handleAdd}>Add</button>
         </div>

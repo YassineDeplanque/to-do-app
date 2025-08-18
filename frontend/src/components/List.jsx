@@ -28,7 +28,7 @@ function List() {
 
   return (
     <>
-    <h1>hello world</h1>
+    <h3>To do list</h3>
       <ul>
         {task.map((t) => (
            <li key={t.id}>{t.texte} <button onClick={() => handleDelete(t.id)}>Delete</button></li>
