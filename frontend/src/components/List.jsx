@@ -16,12 +16,22 @@ function List() {
           })
     }, [])
 
+    const handleDelete = (id) => {
+      axios.delete(`http://localhost:3000/todo/${id}`)
+      .then((res) => {
+        setTask(task.filter(c => c.id !== id))
+      })
+      .catch((err) => {
+        setError(err.message)
+      })
+    }
+
   return (
     <>
     <h1>hello world</h1>
       <ul>
         {task.map((t) => (
-           <li key={t.id}>{t.texte}</li>
+           <li key={t.id}>{t.texte} <button onClick={() => handleDelete(t.id)}>Delete</button></li>
         ))}
       </ul>
     </>
