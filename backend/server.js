@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import todoRoutes from './routes/todoRoutes.js';
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ app.use(cors());
 
 app.use(express.json());
 
-// app.use('/todo' todoRoutes)
+app.use('/todo', todoRoutes)
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
