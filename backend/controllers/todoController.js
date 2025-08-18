@@ -35,3 +35,21 @@ export const createTask = async (req, res) => {
         res.status(500).json({sucess: false, message: "Servor error"});
     }
 }
+
+export const deleteTask = async(req, res) => {
+    const id = req.params.id
+
+    try {
+        const db = await connection();
+        const query = 'DELETE FROM task WHERE id = ?';
+        const [result] = await db.execute(query, [id]);
+
+        res.status(200).json({
+            success: true, 
+            message: "Task deleted"
+        })
+    } catch (err) {
+        console.error('Error deleting task', err);
+        res.status(500).json({sucess: false, message: "Servor error"});
+    }
+}

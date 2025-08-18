@@ -6,12 +6,11 @@ function AddTasks() {
     const [error, setError] = useState('');
     const [task, setTask] = useState('');
 
-    function handleAdd ({ onAdd }) {
+    function handleAdd () {
         const newTask = {texte: task}
         axios.post('http://localhost:3000/todo', newTask)
           .then(res => {
             setTask('');
-            onAdd(res.data);
           })
           .catch ((err) => {
             setError(err.message)
