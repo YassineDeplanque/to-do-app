@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './List.css'
+import AddTasks from './AddTasks';
 
 function List() {
 
@@ -18,6 +19,11 @@ function List() {
             setError(err.message)
           })
     }, [])
+
+      // Fonction pour ajouter une tâche depuis l'enfant
+  const addTask = (newTask) => {
+    setTask(prev => [...prev, newTask]);
+  };
 
     const handleDelete = (id) => {
       axios.delete(`http://localhost:3000/todo/${id}`)
@@ -48,6 +54,7 @@ function List() {
     <>
     <div className='list-container'>
     <h3>To do list</h3>
+    <AddTasks onAdd={addTask} />
       <ul>
         {task.map((t) => (
            <li key={t.id}>{t.texte} 

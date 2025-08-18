@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AddTasks.css';
 
+
 function AddTasks({ onAdd }) {
 
     const [error, setError] = useState('');
@@ -9,11 +10,11 @@ function AddTasks({ onAdd }) {
 
     function handleAdd () {
       if (!task.trim()) return;
-        const newTask = {texte: task}
+        const newTask = {texte: task, id: Date.now()}
         axios.post('http://localhost:3000/todo', newTask)
           .then(res => {
             setTask('');
-            window.location.reload();
+            onAdd(newTask);
           })
           .catch ((err) => {
             setError(err.message)
