@@ -30,15 +30,20 @@ A simple, dynamic To-Do List application built with **React** (frontend) and **N
 todo-app/
 │
 ├── backend/                 
-│   ├── server.js            # Express server
-│   ├── db.sql               # MySQL schema & seed data
-│   └── routes/              # API routes (CRUD)
+│   ├── server.js                # Express server entry point
+│   ├── config/
+│   │   └── db.js                # MySQL connection setup
+│   ├── controllers/
+│   │   └── todoController.js    # CRUD logic for todos
+│   ├── routes/
+│   │   └── todoRoutes.js        # API routes for todos
+│   └── db.sql                   # MySQL schema & seed data
 │
 ├── frontend/                
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── List.jsx     # Display tasks
-│   │   │   ├── AddTasks.jsx # Add new task
+│   │   │   ├── List.jsx         # Display tasks
+│   │   │   ├── AddTasks.jsx     # Add new task
 │   │   │   ├── List.css
 │   │   │   └── AddTasks.css
 │   │   ├── App.jsx
