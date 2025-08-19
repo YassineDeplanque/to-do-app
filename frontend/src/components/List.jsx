@@ -20,7 +20,6 @@ function List() {
           })
     }, [])
 
-      // Fonction pour ajouter une tâche depuis l'enfant
   const addTask = (newTask) => {
     setTask(prev => [...prev, newTask]);
   };
